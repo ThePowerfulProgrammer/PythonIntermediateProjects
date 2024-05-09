@@ -106,7 +106,6 @@ def coffeeMachine(MENU, resources):
     # Indicate system start
     print(LOGO)
     
-    userOrder = input("What would you like? (espresso/latte/cappuccino): ").lower().strip()
     
     while (userOrder != ''):
         if userOrder not in ("espresso", "latte", "cappuccino", "report"):
