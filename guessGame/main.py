@@ -10,10 +10,10 @@ score = 0
 while True:
     index = QuizBrain.question_number
     answer = input(f"Q.{index+1}: {QuizBrain.questions_list[index].text}. (True\False)?: ")
-    if (answer == QuizBrain.questions_list[index].answer):
+    if(QuizBrain.check_answer(answer)):
         score += 1
         QuizBrain.next_question()
-        if (QuizBrain.question_number == len(QuizBrain.questions_list)):
+        if (QuizBrain.is_game_over()):
             print("You WONNN!!!!")
             print(f"Final Score: {score}")
             break            
