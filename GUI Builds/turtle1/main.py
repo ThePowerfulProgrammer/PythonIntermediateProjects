@@ -24,4 +24,5 @@ def walk():
     screen = Screen()
     screen.exitonclick()
     
-walk()
+if __name__ == "__main__":
+    walk()
