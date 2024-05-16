@@ -7,7 +7,10 @@ screen.bgcolor('azure')
 
 
 bet = screen.textinput(title='Race Bet!!!', prompt='Which turtle do you think will win? ')
-print(bet)
+
+while bet not in ('lightgreen','Darkgreen','blue','red','blue'):
+    bet = screen.textinput(title='Race Bet!!!', prompt='Which turtle do you think will win? ')
+
 
 turtwig = Turtle(shape='turtle')
 torterra = Turtle(shape='turtle')
