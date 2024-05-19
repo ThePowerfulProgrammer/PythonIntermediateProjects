@@ -12,14 +12,20 @@ class Snake(object):
         self.segments = []
         
         
-        for _ in range(3):
+        for i in range(3):
             t = Turtle(shape='square')
             t.penup()
-            t.color('white')
+            t.color('maroon')
             t.setpos(x=self.XCORR, y=self.yCORR)
             self.XCORR -= 20
+             
             
             self.segments.append(t)
+            
+        self.snakeHead = self.segments[0]
+        print(self.snakeHead.pos())
+        
+        
             
     def move(self):
         for snakeSeg in range(len(self.segments)-1, 0, -1):
@@ -29,8 +35,29 @@ class Snake(object):
             
             self.segments[snakeSeg].goto(new_x,new_y)
             
-        snakeHead = self.segments[0]
-        snakeHead.fd(20)
+        self.snakeHead.fd(20)
+        
+    # Change direction to right    
+    def Right(self):
+        if self.snakeHead.heading() != 180:
+            self.snakeHead.setheading(0)
+        
+    # change direction to left 
+    def Left(self):
+        if self.snakeHead.heading() != 0:
+            self.snakeHead.setheading(180)
+        
+    # Change direction to up
+    def Up(self):
+        if self.snakeHead.heading() != 270:
+            self.snakeHead.setheading(90)
+
+    # Change direction to down
+    def Down(self):
+        if self.snakeHead.heading() != 90:
+            self.snakeHead.setheading(270)
+        
+        
         
         
             
