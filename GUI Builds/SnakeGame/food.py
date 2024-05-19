@@ -20,7 +20,7 @@ class Food(Turtle):
         print(self.pos())
         
     def move(self):
-        
+        self.color(random.choice(colors))
         self.goto(x=random.randint(-285,285), y=random.randint(-285,285))
         
         

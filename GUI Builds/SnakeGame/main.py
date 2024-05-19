@@ -27,8 +27,12 @@ while play:
     time.sleep(0.1)
 
     snake.move()
-    
 
+    
+    if (snake.snakeHead.distance(food) < 15 ):
+        print("YUMMT")
+        food.move()
+        
 
     
 
