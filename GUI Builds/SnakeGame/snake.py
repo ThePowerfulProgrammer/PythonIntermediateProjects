@@ -13,7 +13,7 @@ class Snake(object):
         for i in range(3):
             t = Turtle(shape='square')
             t.penup()
-            t.color('magenta')
+            t.color('Spring Green')
             t.setpos(x=self.XCORR, y=self.yCORR)
             self.XCORR -= 20
              
@@ -28,7 +28,7 @@ class Snake(object):
     def addSegment(self):
         t = Turtle(shape='square')
         t.penup()
-        t.color('magenta')
+        t.color('Spring Green')
         new_x = self.segments[-1].xcor()
         new_y = self.segments[-1].ycor()
         t.setpos(x=new_x, y=new_y)
