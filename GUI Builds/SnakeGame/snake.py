@@ -4,8 +4,6 @@ from turtle import Turtle
 
 class Snake(object):
     
-
-    
     def __init__(self) -> None:
         self.XCORR = 0
         self.yCORR = 0
@@ -15,7 +13,7 @@ class Snake(object):
         for i in range(3):
             t = Turtle(shape='square')
             t.penup()
-            t.color('maroon')
+            t.color('magenta')
             t.setpos(x=self.XCORR, y=self.yCORR)
             self.XCORR -= 20
              
@@ -23,8 +21,19 @@ class Snake(object):
             self.segments.append(t)
             
         self.snakeHead = self.segments[0]
+        self.snakeTail = self.segments[-1]
         print(self.snakeHead.pos())
         
+        
+    def addSegment(self):
+        t = Turtle(shape='square')
+        t.penup()
+        t.color('magenta')
+        new_x = self.segments[-1].xcor()
+        new_y = self.segments[-1].ycor()
+        t.setpos(x=new_x, y=new_y)
+        
+        self.segments.append(t)
         
             
     def move(self):
@@ -36,6 +45,22 @@ class Snake(object):
             self.segments[snakeSeg].goto(new_x,new_y)
             
         self.snakeHead.fd(20)
+        
+    def detectWallCollision(self):
+        if (self.snakeHead.xcor() > 300 or self.snakeHead.xcor() < -300):
+            return True
+        elif (self.snakeHead.ycor() > 300 or self.snakeHead.ycor() < -300):
+            return True
+        return False
+        
+    def detectSelfCollision(self):
+        for segment in self.segments[1:]:
+            if (self.snakeHead.distance(segment) < 5):
+                return True
+        return False
+            
+    def detectCollission(self):
+        return (self.detectWallCollision() or self.detectSelfCollision())
         
     # Change direction to right    
     def Right(self):
