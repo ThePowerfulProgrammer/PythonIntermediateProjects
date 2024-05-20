@@ -8,6 +8,7 @@ class Snake(object):
         self.XCORR = 0
         self.yCORR = 0
         self.segments = []
+
         
         
         for i in range(3):
@@ -17,14 +18,15 @@ class Snake(object):
             t.setpos(x=self.XCORR, y=self.yCORR)
             self.XCORR -= 20
              
-            
+            print(t.speed())
             self.segments.append(t)
             
         self.snakeHead = self.segments[0]
         self.snakeTail = self.segments[-1]
         print(self.snakeHead.pos())
         
-        
+                
+    
     def addSegment(self):
         t = Turtle(shape='square')
         t.penup()

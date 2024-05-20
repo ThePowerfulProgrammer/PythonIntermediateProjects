@@ -38,6 +38,7 @@ while play:
         food.move()
         score.incrementScore()
         score.rewrite()
+
         
     if (snake.detectCollission()):
         play = False
