@@ -1,7 +1,7 @@
 from turtle import Turtle
 import random
 
-colors = ['red','blue','Spring Green', 'Yellow', 'gold', 'maroon', 'lightblue', 'green', 'purple','darkblue']
+colors = ['red','blue','Spring Green', 'Yellow', 'gold', 'lightgreen', 'lightblue', 'green', 'purple','darkblue','white','lightpink']
 
 class Food(Turtle):
     
