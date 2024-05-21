@@ -11,9 +11,18 @@ class Paddle():
         turtle.penup()
         
         turtle.setpos(x=self.x_coordinate, y=self.y_coordinate)
-        turtle.shapesize(stretch_wid=3,stretch_len=1)
+        #turtle.shapesize(stretch_wid=3,stretch_len=1)
         turtle.color(self.color)
         
         self.paddle = turtle
         
+    def Up(self):
+        if (self.paddle.heading() != 90):
+            self.paddle.setheading(90)
+        self.paddle.fd(20)
+        
+    def Down(self):
+        if (self.paddle.heading() != 270):
+            self.paddle.setheading(270)
+        self.paddle.fd(20)
         
