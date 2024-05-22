@@ -21,9 +21,18 @@ class Paddle():
         if (self.paddle.heading() != 90):
             self.paddle.setheading(90)
         self.paddle.fd(20)
+        print(self.paddle.pos())
         
     def Down(self):
         if (self.paddle.heading() != 270):
             self.paddle.setheading(270)
         self.paddle.fd(20)
+        print(self.paddle.pos())
+        
+    def checkCoordinates(self):
+        if self.paddle.ycor() > 260 :
+            self.paddle.setpos(x=self.x_coordinate, y=260)
+        elif self.paddle.ycor() < -260:
+            self.paddle.setpos(x=self.x_coordinate, y=-260)
+         
         
