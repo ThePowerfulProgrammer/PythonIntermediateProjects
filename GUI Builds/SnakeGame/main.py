@@ -1,4 +1,4 @@
-from turtle import *
+from turtle import Screen
 from snake import Snake
 from food import Food
 from score import Score
@@ -23,8 +23,8 @@ screen.onkeypress(fun=snake.Down,key="Down")
 screen.onkeypress(fun=snake.Right,key="Right")
 screen.onkeypress(fun=snake.Left,key="Left")
 
+#Play The Game
 play = True
-counter = 0
 while play: 
     screen.update()
     time.sleep(0.1)

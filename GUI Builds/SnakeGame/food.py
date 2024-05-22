@@ -7,7 +7,7 @@ class Food(Turtle):
     
     def __init__(self):
         super().__init__() # Parent Ctor
-        
+
         # What do I need my food to modify?
         
         self.shape('circle')
