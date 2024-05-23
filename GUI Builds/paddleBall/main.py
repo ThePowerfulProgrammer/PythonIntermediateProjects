@@ -9,14 +9,16 @@ screen.bgcolor('black')
 screen.title('PONG Battle')
 screen.tracer(0)
 
-paddle = Paddle(x_coordinate=-380, y_coordinate=0, color='Spring Green')
-paddle2 = Paddle(x_coordinate=378, y_coordinate=0, color='red')
+player1 = Paddle(x_coordinate=-380, y_coordinate=0, color='Spring Green')
+player2 = Paddle(x_coordinate=378, y_coordinate=0, color='red')
 ball = Ball()
 
 screen.listen()
-screen.onkeypress(fun=paddle.Up, key='Up')
-screen.onkeypress(fun=paddle.Down, key='Down')
+screen.onkeypress(fun=player1.Up, key='Up')
+screen.onkeypress(fun=player1.Down, key='Down')
 
+screen.onkeypress(fun=player2.Up, key='w')
+screen.onkeypress(fun=player2.Down, key='s')
 
 
 play = True
@@ -24,8 +26,15 @@ while play:
     time.sleep(0.1)
     screen.update()
     
-    paddle.checkCoordinates()
+    player1.checkCoordinates()
+    player2.checkCoordinates()
     ball.move()
+    ball.outOfBounds()
+    
+    if (player1.paddle.distance(ball) <= 38):
+        ball.reBound()
+    elif (player2.paddle.distance(ball) <= 38):
+        ball.reBound()
     
 
             
