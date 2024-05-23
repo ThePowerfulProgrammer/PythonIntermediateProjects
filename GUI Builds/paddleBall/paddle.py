@@ -11,7 +11,7 @@ class Paddle():
         turtle.penup()
         
         turtle.setpos(x=self.x_coordinate, y=self.y_coordinate)
-        turtle.shapesize(stretch_wid=1,stretch_len=3)
+        turtle.shapesize(stretch_wid=1.5,stretch_len=4.5)
         turtle.setheading(90)
         turtle.color(self.color)
         

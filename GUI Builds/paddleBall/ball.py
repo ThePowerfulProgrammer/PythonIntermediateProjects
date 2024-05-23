@@ -10,12 +10,17 @@ class Ball(Turtle):
         self.shape('circle')
         self.penup()
         self.color('white')
-        self.goto(x=random.randint(-395,395), y=random.randint(-295,295))
-        self.speed('fastest')
+        self.goto(x=0, y=0)
+        self.speed('slow')
         
         print(self.pos())
         
         
     def move(self):
-        self.goto(x=random.randint(-395,395), y=random.randint(-295,295))
+        distanceX = self.xcor() + 10
+        distanceY = self.ycor() + 10
+        self.goto(x=distanceX,y=distanceY)
+        
+    def checkPos(self):
+        pass
         
