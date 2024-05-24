@@ -23,7 +23,7 @@ screen.onkeypress(fun=player2.Down, key='s')
 
 play = True
 while play:
-    time.sleep(0.1)
+    time.sleep(0.03)
     screen.update()
     
     player1.checkCoordinates()

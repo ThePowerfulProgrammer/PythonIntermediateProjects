@@ -27,22 +27,21 @@ class Ball(Turtle):
         
     def outOfBounds(self):
         if self.ycor() > 295:
-            self.moveX = self.moveX
-            self.moveY = -self.moveY
+            self.moveY *= -1 
             return True
         elif self.ycor() < -295:
-             self.moveX = self.moveX
-             self.moveY = -(self.moveY)
+             self.moveY *= -1 
              return True
         return False 
      
     def reBound(self):
         left_or_right = random.randint(0,1)
         if (left_or_right == 0):
-            self.moveX = -self.moveX
-            self.moveY = 10
+            self.moveX = -self.moveX - random.randint(0,5)
+            self.moveY = -self.moveY - random.randint(0,5)
         else:
             self.moveX = -self.moveX
             self.moveY = -self.moveY
+
         
         
