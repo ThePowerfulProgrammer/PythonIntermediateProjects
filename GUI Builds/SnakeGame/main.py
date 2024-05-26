@@ -27,7 +27,7 @@ screen.onkeypress(fun=snake.Left,key="Left")
 play = True
 while play: 
     screen.update()
-    time.sleep(0.1)
+    time.sleep(0.07)
 
     snake.move()
 
