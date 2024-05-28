@@ -1,0 +1,22 @@
+What the systems needs to do and what the system needs to provide.
+
+1) Create a screen that presents the game
+2) Create a character for the player 
+3) ensure the character can move vertically
+4) Create obstructions for the character 
+5) These must be random both in color and in moving distance
+5) Ensure you account for collions between the player and the obstructions 
+6) If the player wins 
+7) Repeat the game max 2 more times 
+8) This time the obstructions must move faster
+9) If the user collides :
+    10) Stop
+    11) User loses
+11) User wins 
+
+
+
+
+How to Implement 
+1) main file to init the vars and run the game 
+2) Create a class for the Player
