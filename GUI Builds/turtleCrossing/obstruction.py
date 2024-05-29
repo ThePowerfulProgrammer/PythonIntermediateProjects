@@ -23,7 +23,7 @@ class Obstruction(Turtle):
         
         
     def drive(self, lowerBound, upperBound):
-        self.backward(random.randint(5,20))
+        self.backward(random.randint(lowerBound,upperBound))
         
     def reset(self):
         self.setpos(x=self.startX, y=self.startY)

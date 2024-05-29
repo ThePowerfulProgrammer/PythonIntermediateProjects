@@ -1,4 +1,5 @@
 from turtle import Screen
+from level import Level
 from player import Player
 from obstruction import Obstruction
 import time
@@ -10,6 +11,7 @@ screen.title("Why did the turtle cross the road?")
 screen.tracer(0) # Stop refreshing screen
 
 player = Player()
+level = Level()
 
 topObstructions = []
 startX = 280
@@ -34,7 +36,11 @@ screen.listen()
 screen.onkeypress(fun=player.moveForward, key='w')
 screen.onkeypress(fun=player.moveBackward, key='s')
 
+
+
+
 play = True 
+win = False
 refereshRate = 0.15
 while play:
     screen.update()
@@ -43,6 +49,12 @@ while play:
     for o in obstrunctions:
         o.drive(lowerBound=10, upperBound=60)
         o.checkPos()
+        
+        if ( o.distance(player) <= 20):
+            play = False
+            screen.clear()
+
+            
 
     
     if (player.ycor() > 240):
@@ -50,10 +62,13 @@ while play:
         for o in obstrunctions:
             o.reset()
             
+        level.nextLevel()    
         refereshRate -= 0.05
         
         if (refereshRate < 0):
             play = False
+            win = True
+            screen.clear()
     
     if (player.ycor() < -240):
         player.reset()
@@ -61,3 +76,7 @@ while play:
 
 
 
+if (not win):
+    print("You lost")
+else:
+    print("You win")
