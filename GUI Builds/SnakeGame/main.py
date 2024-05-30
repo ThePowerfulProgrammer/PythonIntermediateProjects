@@ -11,6 +11,8 @@ screen.bgcolor("Black")
 screen.title("Python")
 screen.tracer(0)
 
+player_Name = screen.textinput(title="Player Name: ", prompt="Enter Name: ")
+
 
 
 snake = Snake()
@@ -22,6 +24,7 @@ screen.onkeypress(fun=snake.Up,key="Up")
 screen.onkeypress(fun=snake.Down,key="Down")
 screen.onkeypress(fun=snake.Right,key="Right")
 screen.onkeypress(fun=snake.Left,key="Left")
+
 
 #Play The Game
 play = True
@@ -45,6 +48,12 @@ while play:
         score.gameOver()
         
 
+        
+
 print(score.getScore())
+
+if (score.replaceHighScore(player_name=player_Name)):
+    print("You have the new highest score")
+
 
 screen.exitonclick()
