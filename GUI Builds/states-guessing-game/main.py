@@ -18,4 +18,6 @@ print(df[['x', 'y']])
 
 
 turtle.onscreenclick(fun=getLatLong)
+
+
 turtle.mainloop()
