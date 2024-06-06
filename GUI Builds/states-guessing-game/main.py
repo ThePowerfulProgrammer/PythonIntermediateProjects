@@ -1,8 +1,11 @@
 import pandas as pd
-from turtle import Turtle, Screen
+from turtle import Screen
+from player import Player
 import turtle
 
 screen = Screen()
+player = Player()
+
 
 screen.title('Guess the U.S. state')
 image = 'GUI Builds/states-guessing-game/blank_states_img.gif'
@@ -12,12 +15,9 @@ turtle.shape(image)
 def getLatLong(x,y):
     print(x,y)
 
-df = pd.read_csv('GUI Builds/states-guessing-game/50_states.csv')
-
-print(df[['x', 'y']])
-
-
 turtle.onscreenclick(fun=getLatLong)
 
+
+player.writeState(100,100,'Miss')
 
 turtle.mainloop()
