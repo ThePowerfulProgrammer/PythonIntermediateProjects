@@ -1,6 +1,7 @@
 import pandas as pd
 from turtle import Screen
 from player import Player
+
 import turtle
 
 screen = Screen()
@@ -18,6 +19,7 @@ def getLatLong(x,y):
 turtle.onscreenclick(fun=getLatLong)
 
 
-player.writeState(100,100,'Miss')
+
 
 turtle.mainloop()
+player.writeState(100,100,'Miss')

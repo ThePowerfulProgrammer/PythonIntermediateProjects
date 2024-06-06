@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 # Create df
 df = pd.read_csv('GUI Builds/states-guessing-game/50_states.csv')
 

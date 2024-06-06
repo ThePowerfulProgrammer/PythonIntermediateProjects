@@ -1,5 +1,6 @@
 from turtle import Turtle
 
+
 file = 'C:/Users/ashis/OneDrive/Desktop/Python/Python Intermediate Projects/GUI Builds/SnakeGame/highScores.txt'
 
 class Score(Turtle):
