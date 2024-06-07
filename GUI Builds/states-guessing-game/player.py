@@ -16,7 +16,7 @@ class Player(Turtle):
         
     def writeState(self, lat, lon, stateName):
         self.setpos(x=lat, y=lon)
-        self.write(arg=stateName,font=('oswald',20,'bold'))
+        self.write(arg=stateName,font=('oswald',8,'italic'))
     
         
         

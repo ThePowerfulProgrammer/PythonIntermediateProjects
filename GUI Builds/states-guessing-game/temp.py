@@ -25,3 +25,11 @@ print(first_match.y)
 
 
 
+print("\n"*10)
+try:
+    filtered_states = df[(df.state=='Alabama')].iloc[0]
+    print(filtered_states)
+except IndexError:
+    print("Opp")
+    
+print(len(df.index))
