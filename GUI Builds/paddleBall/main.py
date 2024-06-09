@@ -1,7 +1,9 @@
 from turtle import Screen
+
 from paddle import Paddle
 from ball import Ball
 from score import Score
+
 import time
 
 screen = Screen()
