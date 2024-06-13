@@ -2,19 +2,22 @@ from tkinter import *
 from tkinter import ttk
 
 def printString(*args):
-    print(feet.get())
-    charactersLength = len(feet.get())
-    feet_entry.delete(first=0, last=charactersLength)
+    if (feet.get() == "Exit"):
+        root.destroy()
+    else:
+        print(feet.get())
+        charactersLength = len(feet.get())
+        feet_entry.delete(first=0, last=charactersLength)
 
-    
 
 # Main window
 root = Tk()
 root.title("Example Widget")
 
 
-frame = ttk.Frame(master=root, padding="10 10 10 10")
+frame = ttk.Frame(master=root, padding="25 10 10 25")
 frame.grid(column=0, row=0, sticky=(N,W,E,S))
+
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0,weight=1)
 
