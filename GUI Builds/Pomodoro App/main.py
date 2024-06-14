@@ -6,7 +6,7 @@ import tkinter as tk
 # Step 1) UI Setup
 
 mainWindow = tk.Tk()
-mainWindow.title("Pomodoro Study")
+mainWindow.title("Pomodoro Study App")
 
 # 640 * 426
 
