@@ -6,3 +6,4 @@ FONT_NAME = 'Oswald'
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5   
 lONG_BREAK_MIN = 20
+sessions = 0
