@@ -37,7 +37,7 @@ def count_down(count):
     else:
         canvas.itemconfig(timer_label, text=f"{minutes}:{seconds}")
         
-    print(count)
+    # print(count) Redundant lol
     if count > 0:
         global timer
         timer = mainWindow.after(1000, count_down, count-1)
