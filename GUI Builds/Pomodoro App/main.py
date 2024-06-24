@@ -22,7 +22,7 @@ gradient_img = ImageTk.PhotoImage(gradient_img_jpg)
 
 canvas.create_image(320,213, image=gradient_img)
 canvas.grid(column=2,row=2, sticky=(tk.N, tk.W, tk.E, tk.S))
-break_label = canvas.create_text(318,100, text='Work', font=(systemconstants.FONT_NAME, 35, 'bold'), fill="red")
+break_label = canvas.create_text(318,100, text='Timer', font=(systemconstants.FONT_NAME, 35, 'bold'), fill="red")
 timer_label = canvas.create_text(320,213, text="00:00", font=(systemconstants.FONT_NAME, 35, 'bold'), fill="lightgreen")
 sessions_complete_label = canvas.create_text(320,300, text=success, fill='blue', font=(systemconstants.FONT_NAME, 20, 'italic'))
 
@@ -75,6 +75,7 @@ def resetCount():
     global success
     success= ''
     canvas.itemconfigure(timer_label, text="00:00")
+    canvas.itemconfig(break_label, text="Timer")
     canvas.itemconfigure(sessions_complete_label, text=success)
     systemconstants.sessions = 0
     
