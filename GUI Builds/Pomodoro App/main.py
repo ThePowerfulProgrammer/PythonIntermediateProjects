@@ -6,6 +6,7 @@ from tkinter import ttk
 success = ''
 timer = None
 
+print("No change")
 
 # Step 1) UI Setup
 
