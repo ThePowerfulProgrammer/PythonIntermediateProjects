@@ -23,6 +23,7 @@ gradient_img = ImageTk.PhotoImage(gradient_img_jpg)
 
 canvas.create_image(320,213, image=gradient_img)
 canvas.grid(column=2,row=2, sticky=(tk.N, tk.W, tk.E, tk.S))
+
 break_label = canvas.create_text(318,100, text='Timer', font=(systemconstants.FONT_NAME, 35, 'bold'), fill="red")
 timer_label = canvas.create_text(320,213, text="00:00", font=(systemconstants.FONT_NAME, 35, 'bold'), fill="lightgreen")
 sessions_complete_label = canvas.create_text(320,300, text=success, fill='blue', font=(systemconstants.FONT_NAME, 20, 'italic'))
@@ -83,7 +84,7 @@ def resetCount():
     
 
 # Start btn
-start_btn = ttk.Button(master=mainWindow, text='start', padding=(5,5,5,5), command=startCount).grid(column=1, row=3, sticky=(tk.W))
+start_btn = ttk.Button(master=mainWindow, text='start', padding=(5,5,5,5), command=startCount).grid(column=1, row=3, sticky=(tk.W, tk.E))
 
 # reset btn
 reset_btn =  ttk.Button(master=mainWindow, text="reset", padding=(5,5,5,5), command=resetCount).grid(column=3, row=3)
