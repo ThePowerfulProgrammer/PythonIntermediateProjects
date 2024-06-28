@@ -13,4 +13,3 @@ def displayKwargs(**kwargs):
 print(sumArgs(1,2,3,4,5,10,10))
 
 print(displayKwargs(age=23,name='Ash', gender=1))
-

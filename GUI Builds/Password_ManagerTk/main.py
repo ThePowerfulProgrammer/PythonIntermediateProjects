@@ -5,6 +5,14 @@ from tkinter import PhotoImage
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
+# Read from entry widgets and write to a file called data.txt
+# EG: App | email | password
+
+def printData():
+    pass
+    
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 mainWindow = tk.Tk()
@@ -36,7 +44,7 @@ passwordEntry.grid(row=3, column=1)
 generateButton = tk.Button(text="Generate Password", bg="white")
 generateButton.grid(row=3,column=2)
 
-addButton = tk.Button(text="Add", bg="white", width=44)
+addButton = tk.Button(text="Add", bg="white", width=44, pady=3, padx=3)
 addButton.grid(row=4, column=1, columnspan=2)
 
 mainWindow.mainloop()
