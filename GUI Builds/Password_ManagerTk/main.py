@@ -9,11 +9,11 @@ from tkinter import PhotoImage
 
 mainWindow = tk.Tk()
 mainWindow.title("Password Generator")
-mainWindow.configure(background="white", padx=20, pady=20)
+mainWindow.configure(background="white", padx=50, pady=50)
 
 # canvas
-mainCanvas = tk.Canvas(master=mainWindow,width=200,height=200, background="white", borderwidth=0)
 logo_img = PhotoImage(file="GUI Builds/Password_ManagerTk/logo.png")
+mainCanvas = tk.Canvas(master=mainWindow,width=200,height=200, background="white", borderwidth=0, highlightthickness=0)
 mainCanvas.create_image(100,100, image=logo_img)
 mainCanvas.grid(row=0, column=1)
 
