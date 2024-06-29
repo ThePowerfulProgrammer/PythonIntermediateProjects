@@ -1,5 +1,7 @@
 import tkinter as tk 
-from tkinter import PhotoImage
+from tkinter import PhotoImage, messagebox 
+from PyGeneratePassword import PasswordGenerate
+
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
@@ -8,24 +10,32 @@ from tkinter import PhotoImage
 # Read from entry widgets and write to a file called data.txt
 # EG: App | email | password
 
-def printData(**dict):
+
+
+def save():
     
     if (ApplicationEntry.get() == '' or userEntry.get() == '' or passwordEntry == ''):
-        pass
-        print("Please fill in all values \n")
+        messagebox.showinfo(title="Correct Errors", message="Ensure all fields are complete")
     else:
-        print(ApplicationEntry.get())
-        print(userEntry.get())
-        print(passwordEntry.get(), "\n")
-        # Open file and write
-        with open("./data.txt", "a") as file:
-            file.write(f"{ApplicationEntry.get()} | {userEntry.get()} | {passwordEntry.get()} ")
-    
+        
+        is_okay = messagebox.askokcancel(title="Confirm Details", message=f"Are you okay with: \n {ApplicationEntry.get()} \n {userEntry.get()} \n"
+                               f"{passwordEntry.get()}")
+        
+        if (is_okay):    
+            # Open file and write
+            with open("./data.txt", "a") as file:
+                file.write(f"{ApplicationEntry.get()} | {userEntry.get()} | {passwordEntry.get()} \n")
+        
         ApplicationEntry.delete(0,tk.END)
         
         passwordEntry.delete(0,tk.END)
         
     return ""
+    
+def generatePassword():
+    password = PasswordGenerate()
+    passwordEntry.delete(0,tk.END)
+    passwordEntry.insert(0,password)
     
 
 
@@ -49,6 +59,7 @@ passwordLabel = tk.Label(text="Password:", background="white", font=("Courier", 
 # entry
 ApplicationEntry = tk.Entry(width=52, border=2)
 ApplicationEntry.grid(row=1, column=1, columnspan=2)
+ApplicationEntry.focus()
 
 userEntry = tk.Entry(width=52, border=2)
 userEntry.grid(row=2, column=1, columnspan=2)
@@ -58,10 +69,10 @@ passwordEntry = tk.Entry(width=33, border=2)
 passwordEntry.grid(row=3, column=1)
 
 # buttons
-generateButton = tk.Button(text="Generate Password", bg="white")
+generateButton = tk.Button(text="Generate Password", bg="white", command=generatePassword)
 generateButton.grid(row=3,column=2)
 
-addButton = tk.Button(text="Add", bg="white", width=44, pady=3, padx=3, command=printData)
+addButton = tk.Button(text="Add", bg="white", width=44, pady=3, padx=3, command=save)
 addButton.grid(row=4, column=1, columnspan=2)
 
 mainWindow.mainloop()
