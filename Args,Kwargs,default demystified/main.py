@@ -6,6 +6,9 @@ def sumArgs(*args):
 
 def displayKwargs(**kwargs):
     print(f"Kwargs is a K:v (dict) {kwargs}")
+    
+    print(kwargs.get("color", "Key does not exist"))
+        
     for k,v in kwargs.items():
         print(f"{k}: {v}")
     return ""
