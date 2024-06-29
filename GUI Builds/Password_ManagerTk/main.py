@@ -3,15 +3,6 @@ from tkinter import PhotoImage, messagebox
 from PyGeneratePassword import PasswordGenerate
 
 
-# ---------------------------- PASSWORD GENERATOR ------------------------------- #
-
-# ---------------------------- SAVE PASSWORD ------------------------------- #
-
-# Read from entry widgets and write to a file called data.txt
-# EG: App | email | password
-
-
-
 def save():
     
     if (ApplicationEntry.get() == '' or userEntry.get() == '' or passwordEntry == ''):
@@ -31,7 +22,7 @@ def save():
         passwordEntry.delete(0,tk.END)
         
     return ""
-    
+
 def generatePassword():
     password = PasswordGenerate()
     passwordEntry.delete(0,tk.END)
