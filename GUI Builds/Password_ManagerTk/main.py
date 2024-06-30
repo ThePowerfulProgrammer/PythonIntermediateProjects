@@ -2,21 +2,32 @@ import tkinter as tk
 from tkinter import PhotoImage, messagebox 
 from PyGeneratePassword import PasswordGenerate
 import pyperclip
+import json
 
 def save():
     
     if (ApplicationEntry.get() == '' or userEntry.get() == '' or passwordEntry == ''):
         messagebox.showinfo(title="Correct Errors", message="Ensure all fields are complete")
-    else:
-        
+    else:       
         is_okay = messagebox.askokcancel(title="Confirm Details", message=f"Are you okay with: \n {ApplicationEntry.get()} \n {userEntry.get()} \n"
                                f"{passwordEntry.get()}")
         
         if (is_okay):    
             pyperclip.copy(passwordEntry.get())
+            new_data = {
+                ApplicationEntry.get(): {
+                    'email': userEntry.get(),
+                    'password': passwordEntry.get()
+                }
+            }
+            
             # Open file and write
-            with open("./data.txt", "a") as file:
-                file.write(f"{ApplicationEntry.get()} | {userEntry.get()} | {passwordEntry.get()} \n")
+            with open("./data.json", "r") as file:
+                data = json.load(file)
+                data.update(new_data)
+            
+            with open('./data.json', 'w') as file:
+                json.dump(data, file, indent=4)
         
         ApplicationEntry.delete(0,tk.END)
         
