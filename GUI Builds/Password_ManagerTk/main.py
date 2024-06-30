@@ -22,16 +22,21 @@ def save():
             }
             
             # Open file and write
-            with open("./data.json", "r") as file:
-                data = json.load(file)
+            try:
+                with open("./data.json", "r") as file:
+                    data = json.load(file)
+            except FileNotFoundError:
+                with open('./data.json', 'w') as file:
+                    json.dump(new_data, file, indent=4)
+            else:
                 data.update(new_data)
             
-            with open('./data.json', 'w') as file:
-                json.dump(data, file, indent=4)
-        
-        ApplicationEntry.delete(0,tk.END)
-        
-        passwordEntry.delete(0,tk.END)
+                with open('./data.json', 'w') as file:
+                    json.dump(data, file, indent=4)
+            finally:
+                ApplicationEntry.delete(0,tk.END)
+                
+                passwordEntry.delete(0,tk.END)
         
     return ""
 
@@ -42,7 +47,18 @@ def generatePassword():
     passwordEntry.insert(0,password)
     
     
-
+def findData():
+    try:
+        with open("./data.json", "r") as file:
+            dict = json.load(file)
+            app = ApplicationEntry.get()
+            if (dict.get(app, False) != False):
+                messagebox.showinfo(title="Account Details", message=f"Email: {dict[app]['email']} \nPassword:  {dict[app]['password']} ")
+            else:
+                messagebox.showerror(title="Acc details", message="First create data for Account")        
+    except FileNotFoundError:
+        print("File does not exist")
+        messagebox.showerror(title="File does not exist", message="First create data")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -62,8 +78,8 @@ userLabel = tk.Label(text="Email/Username:", background="white", font=("Courier"
 passwordLabel = tk.Label(text="Password:", background="white", font=("Courier", 15)).grid(row=3,column=0)
 
 # entry
-ApplicationEntry = tk.Entry(width=52, border=2)
-ApplicationEntry.grid(row=1, column=1, columnspan=2)
+ApplicationEntry = tk.Entry(width=33, border=2)
+ApplicationEntry.grid(row=1, column=1)
 ApplicationEntry.focus()
 
 userEntry = tk.Entry(width=52, border=2)
@@ -74,6 +90,9 @@ passwordEntry = tk.Entry(width=33, border=2)
 passwordEntry.grid(row=3, column=1)
 
 # buttons
+searchButton = tk.Button(text="Search", bg="white", width=14, command=findData)
+searchButton.grid(row=1, column=2)
+
 generateButton = tk.Button(text="Generate Password", bg="white", command=generatePassword)
 generateButton.grid(row=3,column=2)
 
