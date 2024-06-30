@@ -1,7 +1,7 @@
 import tkinter as tk 
 from tkinter import PhotoImage, messagebox 
 from PyGeneratePassword import PasswordGenerate
-
+import pyperclip
 
 def save():
     
@@ -13,6 +13,7 @@ def save():
                                f"{passwordEntry.get()}")
         
         if (is_okay):    
+            pyperclip.copy(passwordEntry.get())
             # Open file and write
             with open("./data.txt", "a") as file:
                 file.write(f"{ApplicationEntry.get()} | {userEntry.get()} | {passwordEntry.get()} \n")
@@ -25,8 +26,10 @@ def save():
 
 def generatePassword():
     password = PasswordGenerate()
+    pyperclip.copy(password)
     passwordEntry.delete(0,tk.END)
     passwordEntry.insert(0,password)
+    
     
 
 
