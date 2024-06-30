@@ -2,7 +2,6 @@ NATOAlphabets = ['Alfa', 'Bravo', 'Charlie', 'Delta', 'Echo', 'Foxtrot', 'Golf',
                 'Mike', 'November', 'Oscar', 'Papa', 'Quebec', 'Romeo', 'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'Xray', 'Yankee', 'Zulu']
 
 NATOAlphabetsDict = {word[0]:word for word in NATOAlphabets}
-print(NATOAlphabetsDict)
 
 word = input("Enter a word: ").upper()
 
