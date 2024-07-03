@@ -8,9 +8,17 @@ BACKGROUND_COLOR = "#B1DDC6"
 MY_BACKGROUND_COLOR = "#86FEB8" 
 switch = 0
 currentWord = 0
+correctGuesses = {}
+incorrectGuesses = {}
+right = 0
+wrong = 0
 
-# read in the csv
-dataframe = pd.read_csv("./data/Af_Eng_Top_100 - Sheet1.csv")
+
+# read in the 
+try:
+    dataframe = pd.read_csv("./data/Af_Eng_Top_100 - Sheet1.csv")
+except FileNotFoundError:
+    print("File not found, check current directory of operation")
 
 # functions
 def switchCard():
@@ -21,20 +29,38 @@ def switchCard():
         Canvas.itemconfig(language_label, text="Afrikaans")
         Canvas.itemconfig(word_label, text=dataframe['Afrikkans'].values[currentWord])
         switch = 0
-        mainWindow.after(1000, switchCard)
+
+        mainWindow.after(3000, switchCard)
     else:
         Canvas.itemconfig(current_img, image=back_card_img)
         Canvas.itemconfig(language_label, text="English")
         Canvas.itemconfig(word_label, text=dataframe['English'].values[currentWord])
+
         switch = 1
-        if (currentWord == 50):
+        if (currentWord == 6):
+            mainWindow.destroy()
             return "Game Complete"
         currentWord += 1
-        mainWindow.after(1000, switchCard)
+        mainWindow.after(3000, switchCard)
 
         
 
-    
+def correctGuess():
+        global right, correctGuesses
+        try:
+            correctGuesses[dataframe['Afrikkans'].values[currentWord]] = dataframe['English'].values[currentWord]
+        except ValueError as e:
+            print(e)
+        right += 1
+        
+def incorrectGuess():
+        global wrong, incorrectGuesses
+        try:    
+            incorrectGuesses[dataframe['Afrikkans'].values[currentWord]] = dataframe['English'].values[currentWord]
+        except ValueError as e:
+            print(e)
+        wrong += 1
+
 
 # a) Create the GUI
 
@@ -58,16 +84,19 @@ Canvas.grid(row=0,column=0, columnspan=2)
 
 # 3) add the buttons
 x_img = PhotoImage(file="./images/x.png")
-wrongBtn = tk.Button(image=x_img, highlightthickness=0)
+wrongBtn = tk.Button(image=x_img, highlightthickness=0, command=incorrectGuess)
 wrongBtn.grid(row=1, column=0)
 
 right_img = PhotoImage(file="./images/tick.png")
-rightBtn = tk.Button(image=right_img, highlightthickness=0)
+rightBtn = tk.Button(image=right_img, highlightthickness=0, command=correctGuess)
 rightBtn.grid(row=1, column=1)
 
 
 
-mainWindow.after(1000, switchCard)
+mainWindow.after(3000, switchCard)
 
 
 mainWindow.mainloop()
+
+print( right,"",correctGuesses)
+print( wrong,"",incorrectGuesses)
