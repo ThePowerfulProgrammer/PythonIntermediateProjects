@@ -46,17 +46,19 @@ class QuizInterface:
         self.mainCanvas.itemconfigure(self.canvasText, text=qText)
             
     def correctGuess(self):
-        while (self.quiz.still_has_questions()):    
-            self.score += 1
-            self.textLabel.config(text=f"score: {self.score}")
+        if (self.quiz.still_has_questions()):
+            if (self.quiz.check_answer("True")):
+                self.score += 1
+                self.textLabel.config(text=f"Score: {self.score}")
             self.getNextQuestion()
         else:
             self.endGame()
-        
+
     def incorrectGuess(self):
-        if (self.quiz.still_has_questions()):    
-            self.score += 1
-            self.textLabel.config(text=f"score: {self.score}")
+        if (self.quiz.still_has_questions()):
+            if (self.quiz.check_answer("False")):
+                self.score += 1
+                self.textLabel.config(text=f"Score: {self.score}")
             self.getNextQuestion()
         else:
             self.endGame()
