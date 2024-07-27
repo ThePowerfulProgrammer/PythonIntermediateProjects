@@ -53,40 +53,50 @@ COMPANY_NAME = "Tesla Inc"
 ## STEP 2: Use https://newsapi.org
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME. 
 
-newsParameters = {
-    "apiKey":NEWS_API_KEY,
-    "country":"us",
-    "category":"business",
-    "q":"Tesla",
-}
-newsResponse = requests.get("https://newsapi.org/v2/top-headlines",params=newsParameters)
 
-newsResponse.raise_for_status()
-newsDict = newsResponse.json()
-if (newsDict['totalResults'] > 0):       
-    print(newsDict["articles"][0]["source"])
-    print(newsDict["articles"][0]["author"])
-    title = newsDict["articles"][0]["title"]
-    url = newsDict["articles"][0]["url"]
-    print(newsDict["articles"][0]["publishedAt"])
+def createNews():
+    newsParameters = {
+        "apiKey":NEWS_API_KEY,
+        "country":"us",
+        "category":"business",
+        "q":"Tesla",
+    }
+    newsResponse = requests.get("https://newsapi.org/v2/top-headlines",params=newsParameters)
 
+    newsResponse.raise_for_status()
+    newsDict = newsResponse.json()
+    if (newsDict['totalResults'] > 0):       
+        #print(newsDict["articles"][0]["source"])
+        #print(newsDict["articles"][0]["author"])
+        title = newsDict["articles"][0]["title"]
+        url = newsDict["articles"][0]["url"]
+        #print(newsDict["articles"][0]["publishedAt"])
+        return [title,url]
+    return []
 
 
 ## STEP 3: Use SMTP TO email yourself
 # Send a seperate message with the percentage change and each article's title and description to your phone number. 
-try:
-        
-    with smtplib.SMTP("smtp.gmail.com") as connection:
-        connection.starttls()
-        connection.login(user=MY_EMAIL, password=PASSWORD)
-        connection.sendmail(
-            from_addr=MY_EMAIL,
-            to_addrs=TO_EMAIL,
-            msg=f"Subject:{COMPANY_NAME} News\n\nTSLA percentage increase here \nHeadline:{title} \nUrl:{url}"
-        )
-    print("Success")
-except:
-    print("Error Encountered")
+
+def sendEmail(newsData:list):
+    if (len(newsData) == 2):
+            
+        try:
+                
+            with smtplib.SMTP("smtp.gmail.com") as connection:
+                connection.starttls()
+                connection.login(user=MY_EMAIL, password=PASSWORD)
+                connection.sendmail(
+                    from_addr=MY_EMAIL,
+                    to_addrs=TO_EMAIL,
+                    msg=f"Subject:{COMPANY_NAME} News\n\nTSLA percentage increase here \nHeadline:{newsData[0]} \nUrl:{newsData[1]}"
+                )
+            print("Success")
+        except:
+            print("Error Encountered")
+    return "Terminated"
+
+sendEmail(createNews())
 
 #Optional: Format the SMS message like this: 
 """
