@@ -44,13 +44,13 @@ url = 'https://www.alphavantage.co/query'
 r = requests.get(url, params=parameters)
 data = r.json()
 
-print("yesterday price: ",data["Time Series (Daily)"][yesterday_str]["1. open"])
-print("2 days ago price: ",data["Time Series (Daily)"][day_before_yesterday_str]["1. open"])       
+print("yesterday price: ",data["Time Series (Daily)"][yesterday_str]["4. close"])
+print("2 days ago price: ",data["Time Series (Daily)"][day_before_yesterday_str]["4. close"])       
 
-print(float(data["Time Series (Daily)"][yesterday_str]["1. open"])-float(data["Time Series (Daily)"][day_before_yesterday_str]["1. open"])  )
+print(float(data["Time Series (Daily)"][yesterday_str]["4. close"])-float(data["Time Series (Daily)"][day_before_yesterday_str]["4. close"])  )
 
-first_valid_opening_price = float(data["Time Series (Daily)"][yesterday_str]["1. open"])
-second_valid_opening_price = float(data["Time Series (Daily)"][day_before_yesterday_str]["1. open"])
+first_valid_opening_price = float(data["Time Series (Daily)"][yesterday_str]["4. close"])
+second_valid_opening_price = float(data["Time Series (Daily)"][day_before_yesterday_str]["4. close"])
 
 print(first_valid_opening_price)
 print(second_valid_opening_price)
@@ -91,7 +91,7 @@ if (abs(percentageIncrease) >= 2 ):
                     connection.sendmail(
                         from_addr=MY_EMAIL,
                         to_addrs=TO_EMAIL,
-                        msg=f"Subject:{COMPANY_NAME} News\n\nTSLA Stocks Price changed by {round(percentageIncrease,2)}% \nHeadline:{newsData[0]} \nUrl:{newsData[1]}"
+                        msg=f"Subject:{COMPANY_NAME} News\n\nTSLA Stocks Closing Price changed by {round(percentageIncrease,2)}% \nHeadline:{newsData[0]} \nUrl:{newsData[1]}"
                     )
                 return("Success")
             except:
