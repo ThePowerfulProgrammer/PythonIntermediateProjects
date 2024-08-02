@@ -1,5 +1,5 @@
 import requests
-from secret import amadeus_endpoint
+from secret import amadeus_endpoint,amadeus_access_token
 
 
 flight_finder_parameters = {
@@ -11,15 +11,25 @@ flight_finder_parameters = {
     
 }
 
+
+print("Token ",amadeus_access_token)
+
 flight_finder_headers = {
-    "authorization": f"Bearer w8ANPU1nYTnkhjLMbGInjGPnZZWz"
+    "authorization": f"Bearer XpfMAqxRJGBGneP3iWGBAABR8wIh"
 }
 response = requests.get(url="https://test.api.amadeus.com/v2/shopping/flight-offers", params=flight_finder_parameters, headers=flight_finder_headers)
 print(response.raise_for_status())
 
 
 json = response.json()
-print(json)
+print(json['meta'])
+
+print(json['data'][0]['source'])
+
+print(json['data'][0]['price']['currency'])
+
+print(json['data'][0]['price']['total'])
+
 
 
 
