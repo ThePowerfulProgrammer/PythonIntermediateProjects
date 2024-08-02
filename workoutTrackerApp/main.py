@@ -1,5 +1,6 @@
 import requests
-from secret import Application_ID,APIKEY, SHEEETY_ENDPOINT
+from requests.auth import HTTPBasicAuth
+from secret import Application_ID,APIKEY, SHEEETY_ENDPOINT, AuthHeader
 import datetime
 
 host_domain = "https://trackapi.nutritionix.com"
@@ -35,6 +36,16 @@ for exercise in JSON['exercises']:
             "calories": exercise['nf_calories']
         }
     }
+    
+    header = {
+        "Authorization":AuthHeader,
+    }
+    
     sheetyPostResponse = requests.post(url=SHEEETY_ENDPOINT, json=body)
+    
+    
+    
+    
+    
     print(sheetyPostResponse.raise_for_status())
     print(sheetyPostResponse.text)
