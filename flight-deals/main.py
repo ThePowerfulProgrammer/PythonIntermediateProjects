@@ -15,7 +15,7 @@ flight_finder_parameters = {
 print("Token ",amadeus_access_token)
 
 flight_finder_headers = {
-    "authorization": f"Bearer XpfMAqxRJGBGneP3iWGBAABR8wIh"
+    "authorization": f"Bearer Only use when running"
 }
 response = requests.get(url="https://test.api.amadeus.com/v2/shopping/flight-offers", params=flight_finder_parameters, headers=flight_finder_headers)
 print(response.raise_for_status())
