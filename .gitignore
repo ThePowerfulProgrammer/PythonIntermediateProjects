@@ -8,6 +8,7 @@ rain_notification_app
 SNEP/secret.py
 habitTracker
 workoutTrackerApp/secret.py
-flight-deals/sample.txt
-
-flight-deals/secret.py
+/flight-deals/sample.txt
+/flight-deals/secret.py
+SNEP
+workoutTrackerApp
