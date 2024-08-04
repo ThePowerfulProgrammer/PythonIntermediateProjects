@@ -10,23 +10,22 @@ flightLocationsResponse = requests.get(url=endpoint)
 flightLocationsResponse.raise_for_status()
 FLRJ = flightLocationsResponse.json()
 
-locationCode = ['DUR','DUR','DUR','DUR','DUR', 'COK']
+locationCode = []
 destinationCities = []
 destinationCode = []
 destinationPrice = []
 
 
 for i in range(len(FLRJ['sheet1'])):
-    print('city: ',FLRJ['sheet1'][i]['city'])
+    locationCode.append(FLRJ['sheet1'][i]['origin'] )
     destinationCities.append(FLRJ['sheet1'][i]['city'])
-    print('Code: '  ,FLRJ['sheet1'][i]['iataCode'])
     destinationCode.append(FLRJ['sheet1'][i]['iataCode'])
-    print("Price: " ,FLRJ['sheet1'][i]['lowestPrice'])
     destinationPrice.append(FLRJ['sheet1'][i]['lowestPrice'])
-    print("Id: " ,FLRJ['sheet1'][i]['id'])
     
-
-
+print(locationCode)
+print(destinationCities)
+print(destinationCode)
+print(destinationPrice)
 
 flight_deals_table = PrettyTable()
 flight_deals_table.field_names = ["Departure City", 
@@ -41,7 +40,7 @@ flight_deals_table.field_names = ["Departure City",
                                 "Carrier"]
 
 flight_finder_headers = {
-    "authorization": f"Bearer TokenHere"
+    "authorization": f"Bearer "
 }
 
 
@@ -87,27 +86,18 @@ for i in range(len(destinationCode)):
 print(flight_deals_table)
 
 
-with smtplib.SMTP("smtp.gmail.com") as conn:
-    conn.starttls()
-    conn.login(user="azuraramnath@gmail.com", password="geof xuax dufw mict")
+# with smtplib.SMTP("smtp.gmail.com") as conn:
+#     conn.starttls()
+#     conn.login(user="azuraramnath@gmail.com", password="geof xuax dufw mict")
     
-    conn.sendmail(
-        from_addr="azuraramnath@gmail.com",
-        to_addrs="ashishr0301@gmail.com",
-        msg=f"Subject:Flight Deals\n\n{flight_deals_table}"
-    )
+#     conn.sendmail(
+#         from_addr="azuraramnath@gmail.com",
+#         to_addrs="ashishr0301@gmail.com",
+#         msg=f"Subject:Flight Deals\n\n{flight_deals_table}"
+#     )
 
 
-#This file will need to use the DataManager,FlightSearch, FlightData, NotificationManager classes to achieve the program requirements.
 
-# Find amazing flight deals
-# Api's needed:
-#     Flight finder API --> Find Flights
-#     Google sheets API --> How to find flights
-#     Gmail API --> Send an email to make me aware
-
-
-# Google sheet: City, IATA Code, Lowest Price
 
 
 
