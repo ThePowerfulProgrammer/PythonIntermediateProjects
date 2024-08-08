@@ -17,11 +17,11 @@ flightSearch = FlightSearch(destinationCodes,locationCodes, destinationPrices)
 # 3) create the table
 flightData = FlightData(flightSearch.getJson())
 flightData.createRows()
-
+print(flightData.getTable())
 
 # 4) Email the table
-notificationManager = NotificationManager(flight_data=flightData.getTable())
-notificationManager.sendMail()
+# notificationManager = NotificationManager(flight_data=flightData.getTable())
+# notificationManager.sendMail()
 
 
 
