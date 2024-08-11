@@ -17,8 +17,25 @@ print("Link: ", articleLink)
 print("Upvotes: ",articleUpvote)
 
 articles = soup.find_all(name="a", class_="storylink")
-articleUpvotes = soup.find(name="span", class_="score")
+articleUpvotes = soup.find_all(name="span", class_="score")
 
-print("\n"*20)
-for article in articles:
-    print(f"Title: {article.getText()} - {article.get('href')}  {articleUpvotes.getText()}")
+# print("\n"*20)
+# for article in articles:
+#     print(f"Title: {article.getText()} - {article.get('href')}  {articleUpvotes.getText()}")
+
+
+
+largestScore = 0
+index = 0
+            
+            
+for i in range(len(articleUpvotes)):
+    if (int(articleUpvotes[i].getText().split()[0]) > largestScore):
+        largestScore = int(articleUpvotes[i].getText().split()[0])
+        index = i
+
+print(largestScore)
+print(index)
+print(articleUpvotes[index])
+print(articles[index])
+        
