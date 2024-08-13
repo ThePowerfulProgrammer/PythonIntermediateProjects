@@ -22,4 +22,6 @@ flight-deals/data_manager.py
 flight-deals/__pycache__
 SpotifyMTM/secret.py
 SpotifyMTM/__pycache__
+SpotifyMTM/spotifyAccess.py
 .cache
+token.txt
