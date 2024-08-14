@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from spotifyAccess import createSpoitfySongsURI, addSongsToPlaylist
 
 
 
@@ -15,11 +16,15 @@ def createSongList(date) -> list:
     allSongTitles = soup.select(selector="li h3")
     top100 = [allSongTitles[i].getText().strip() for i in range(100)]    
     return top100
-    
-
-    
+        
 year = "2010-01-20"
-print(createSongList(year))
+
+songs = createSongList(year)
+
+uris = createSpoitfySongsURI(songs)
+
+addSongsToPlaylist(uris)
+
 
 
     
