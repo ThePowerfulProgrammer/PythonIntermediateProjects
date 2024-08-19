@@ -23,8 +23,9 @@ totalCylinderMovement += 3999 - q[-1]
 
 startingIndex = -2
 
-for i in range(-2,3,1):
-    
+for i in range (startingIndex,-8,-1):
+    print(i, " - ", i-1)
+    print(q[i], " - ", q[i-1])
     totalCylinderMovement += abs(q[i] - q[i-1])
-    
+
 print(totalCylinderMovement)
