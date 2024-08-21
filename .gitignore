@@ -25,3 +25,5 @@ SpotifyMTM/__pycache__
 SpotifyMTM/spotifyAccess.py
 .cache
 token.txt
+newemail.csv
+linkedInAutomation/secret.py
