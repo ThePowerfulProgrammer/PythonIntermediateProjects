@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
 import requests
+import re
 
 
 response = requests.get(url='https://appbrewery.github.io/Zillow-Clone/')
@@ -19,11 +20,16 @@ for add in addresses:
 
 # Found all prices
 prices = soup.find_all(name='span', attrs={'data-test':"property-card-price"})
-for price in prices:
-    print(price.text)
+cleanedPrices = [price.text[0:6] for price in prices]
+for price in cleanedPrices:
+    print(price)
     
 # Found all links
 links = soup.find_all('a',class_='property-card-link')
 
 for link in links:
     print(link.get('href'))
+    
+    
+# I have all my data --> 44 forms that I need to fill.
+
