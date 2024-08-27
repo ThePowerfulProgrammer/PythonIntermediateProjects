@@ -49,7 +49,7 @@ def greetUser(name):
     return f"Greetings {name}"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
     
     
     
