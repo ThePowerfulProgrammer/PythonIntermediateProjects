@@ -31,3 +31,8 @@ MyVideoDownloader
 Capstone_SF_Rent_Research/secret.py
 FlaskApps/MySite/static
 FlaskApps/MySite/templates
+FlaskApps/BootedBlog/templates
+FlaskApps/BootedBlog/static
+FlaskApps/BootedBlog/post.py
+
+
