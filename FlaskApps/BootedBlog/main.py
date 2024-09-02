@@ -31,6 +31,10 @@ def getBlogPost(id):
 
 # Paths for details from navbar
 
+@app.route('/contact')
+def getContactPage():
+    
+    return render_template('contact.html')
 
 # path 
 
