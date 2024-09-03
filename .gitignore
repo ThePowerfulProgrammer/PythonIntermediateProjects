@@ -34,5 +34,6 @@ FlaskApps/MySite/templates
 FlaskApps/BootedBlog/templates
 FlaskApps/BootedBlog/static
 FlaskApps/BootedBlog/post.py
+FlaskApps/fullBlog/
 
 
