@@ -35,5 +35,9 @@ FlaskApps/BootedBlog/templates
 FlaskApps/BootedBlog/static
 FlaskApps/BootedBlog/post.py
 FlaskApps/fullBlog/
+FlaskApps/WTFSite/templates
+FlaskApps/WTFSite/form.py
+FlaskApps/WTFSite/requirements.txt
+FlaskApps/WTFSite/__pycache__
 
 
