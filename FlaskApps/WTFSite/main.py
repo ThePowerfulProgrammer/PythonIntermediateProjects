@@ -1,6 +1,6 @@
 from flask import Flask, render_template,request
 from form import MyForm
-
+from flask_bootstrap import Bootstrap4
 
 app = Flask(__name__)
 
@@ -29,4 +29,6 @@ def login():
 if __name__ == '__main__':
     SECRET_KEY = 'asecretkey'.encode('utf-8')
     app.config['SECRET_KEY'] = SECRET_KEY
+    bootstrap = Bootstrap4(app)
     app.run(debug=True)
+    
