@@ -19,7 +19,8 @@ def login():
             print("suceess") 
             print(request.form.get('email'))
             print(request.form.get('password'))
-            if (form.email.data == 'admin@example.com' and form.password.data =="12345678"):            
+            if (form.email.data == 'admin@example.com' and form.password.data =="12345678"):
+                # render using template inheritance            
                 return render_template(template_name_or_list='success.html')
             else:
                 return render_template(template_name_or_list="denied.html")            
